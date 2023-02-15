@@ -3,7 +3,8 @@ require('dotenv').config()
 const web3 = new Web3(
   'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
 )
-const ABI = require('../client/admin/assets/abi/ERC20.json')
+const ABI = require('../../client/admin/assets/abi/ERC20.json')
+const vestingabi = require('../ABI/vestingABI.json')
 
 const wallet = web3.eth.accounts.wallet.add(process.env.ADMIN_PRIVATEKEY)
 
@@ -19,6 +20,31 @@ const sendERC20Token = async function (tokenAddress, receiver, amount) {
   })
   console.log(tx)
   return tx
+}
+
+const getVestingInfor = async function () {
+  const VestingContract = new web3.eth.Contract(
+    vestingabi,
+    '0x5245306dB39361031993FBB7bc207B447Cb42A08'
+  )
+  const tokenAddress = await VestingContract.methods.token().call()
+  const projectName = await VestingContract.methods.projectName().call()
+  const firstRelease = await VestingContract.methods.firstRelease().call()
+  const startTime = await VestingContract.methods.startTime().call()
+  const totalPeriods = await VestingContract.methods.totalPeriods().call()
+  const timePerPeriod = await VestingContract.methods.timePerPeriod().call()
+  const cliff = await VestingContract.methods.cliff().call()
+  const totalTokens = await VestingContract.methods.totalTokens().call()
+  return {
+    tokenAddress: tokenAddress,
+    projectName: projectName,
+    firstRelease: firstRelease,
+    startTime: startTime,
+    totalPeriods: totalPeriods,
+    timePerPeriods: timePerPeriod,
+    cliff: cliff,
+    totalTokens: totalTokens,
+  }
 }
 
 const connectMetamask = async function () {
@@ -38,4 +64,4 @@ const connectMetamask = async function () {
   }
 }
 
-;(module.exports = sendERC20Token), connectMetamask
+module.exports = { sendERC20Token, connectMetamask, getVestingInfor }

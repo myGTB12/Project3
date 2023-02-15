@@ -4,8 +4,8 @@ const web3 = new Web3(
   'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
 )
 
-const abi = require('./ABI/vestingABI.json')
-const erc20ABI = require('./ABI/erc20.json')
+const abi = require('../ABI/vestingABI.json')
+const erc20ABI = require('../ABI/erc20.json')
 const wallet = web3.eth.accounts.wallet.add(process.env.ADMIN_PRIVATEKEY)
 
 async function getDecimal(tokenAddress) {
@@ -15,13 +15,16 @@ async function getDecimal(tokenAddress) {
 }
 
 const fundVesting = async function (contractAddress, amountToken) {
-  const accounts = await web3.eth.getAccounts()
   const VestingContract = new web3.eth.Contract(abi, contractAddress)
   const tokenAddress = await VestingContract.methods.token().call()
-  const decimal = await getDecimal(tokenAddress)
-  const amount = amountToken / Math.pow(10, decimal)
-  const fundVesting = VestingContract.methods.fundVesting(amount).send({
-    from: accounts[0],
+  const ERC20 = new web3.eth.Contract(erc20ABI, tokenAddress)
+  await ERC20.methods.approve(contractAddress, amountToken).send({
+    from: wallet.address,
+    gasLimit: 300000,
+  })
+  const fundVesting = VestingContract.methods.fundVesting(amountToken).send({
+    from: wallet.address,
+    gasLimit: 300000,
   })
   return fundVesting
 }
@@ -111,7 +114,8 @@ const totalTokens = async function (contractAddress) {
   return totalTokens
 }
 
-;(module.exports = fundVesting),
+module.exports = {
+  fundVesting,
   claimTokens,
   setStartTime,
   addWhitelistUser,
@@ -123,4 +127,5 @@ const totalTokens = async function (contractAddress) {
   firstRelease,
   timePerPeriod,
   cliff,
-  totalTokens
+  totalTokens,
+}

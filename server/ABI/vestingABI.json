@@ -7,6 +7,11 @@
         "type": "address"
       },
       {
+        "internalType": "string",
+        "name": "_projectName",
+        "type": "string"
+      },
+      {
         "internalType": "uint256",
         "name": "_firstRelease",
         "type": "uint256"
@@ -203,6 +208,19 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "projectName",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
