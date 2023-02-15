@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <script src="assets/js/ajax.js"></script>
   </head>
   <body>
     <div class="container-scroller">
@@ -54,7 +55,6 @@
                 </div>
                 <div class="profile-name">
                   <h5 class="mb-0 font-weight-normal">Super Admin</h5>
-                  <span>S+ Member</span>
                 </div>
               </div>
               <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -188,7 +188,7 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" href="./pages/forms/create_project.html">Connect Wallet</a>
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" onclick="connectMetamask()">Connect Wallet</a>
                 <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                   <h6 class="p-3 mb-0">Projects</h6>
                   <div class="dropdown-divider"></div> -->
@@ -219,7 +219,7 @@
                 </div> -->
               </li>
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" href="./pages/forms/create_project.html">Disconnect Wallet</a>
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" onclick="disconnectMetamask()">Disconnect Wallet</a>
               </li>
                 <!-- <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
@@ -388,7 +388,7 @@
                           <span class="bg-tokenUSDC"></span>
                           <span class="bg-tokenETH"></span>
                         </div>
-                        <a href="./pages/forms/create_project.html">Details</a>
+                        <a href="./pages/forms/project_detail.html">Details</a>
                         <!-- <a onclick="buyToken()">Buy Now</a> -->
                       </div>
                     </div>
@@ -1181,7 +1181,6 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/ajax.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>
