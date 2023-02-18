@@ -37,8 +37,7 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Super Admin</h5>
-                  <span>S+ Member</span>
+                  <h5 class="mb-0 font-weight-normal" id="username">GUEST</h5>
                 </div>
               </div>
               <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -172,7 +171,7 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" href="./pages/forms/create_project.html">+ Create New Project</a>
+                <a class="nav-link btn btn-success create-new-button" id="btnConnectMetamask" aria-expanded="false">+ Create New Project</a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                   <h6 class="p-3 mb-0">Projects</h6>
                   <div class="dropdown-divider"></div>
@@ -299,7 +298,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="../../assets/images/faces/businessman-office-man-3d-realistic-line-icon-vector-top-view-illustration-color-pictogram-isolated-white-background_277697-598.webp" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Super Admin</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name" id="username">Your Wallet</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -404,7 +403,7 @@
                           <input type="text" name="amount" class="form-control" id="exampleInputConfirmPassword2" placeholder="Amount token to buy">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary me-2">Buy</button>
+                      <button type="submit" class="btn btn-primary me-2" id="btn-buy-token">Buy</button>
                     </form>
                   </div>
                 </div>

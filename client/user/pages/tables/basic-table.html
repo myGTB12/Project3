@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Vesting Admin</title>
+    <title>Vesting Now</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -35,7 +35,7 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Super Admin</h5>
+                  <h5 class="mb-0 font-weight-normal">Your Wallet</h5>
                 </div>
               </div>
               <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -166,7 +166,7 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" aria-expanded="false" href="./pages/forms/create_project.html">Connect wallet</a>
+                <a class="nav-link btn btn-success create-new-button" id="btnConnectMetamask" aria-expanded="false">Connect wallet</a>
               </li>
               <li class="nav-item nav-settings d-none d-lg-block">
               </li>
@@ -174,7 +174,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="../../assets/images/faces/businessman-office-man-3d-realistic-line-icon-vector-top-view-illustration-color-pictogram-isolated-white-background_277697-598.webp" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">0x8878...</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name" id="username">0x8878...</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -220,7 +220,7 @@
             </div>
             <div class="row">
               <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
+                <!-- <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Project Details</h4>
                     </p>
@@ -269,7 +269,7 @@
                       </table>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <!-- <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
