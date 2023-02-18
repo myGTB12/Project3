@@ -1,5 +1,15 @@
-window.onload = function () {
+window.onload = async function () {
   getdata()
+  if (window.ethereum.isConnected()) {
+    await window.ethereum.request({ method: 'eth_requestAccounts' })
+    const account = window.ethereum.selectedAddress
+    const display = account.toString()
+    document.getElementById('btnConnectMetamask').innerHTML =
+      display.substring(0, 5) + '...' + display.substring(38, 42)
+    document.getElementById('username').innerHTML =
+      display.substring(0, 5) + '...' + display.substring(38, 42)
+    username
+  }
 }
 function getdata() {
   $.ajax({
@@ -24,35 +34,25 @@ function getdata() {
   })
 }
 
-function buyToken() {
-  $.ajax({
-    type: 'GET',
-    url: 'http://localhost:3000/buyToken',
-    success: function (data) {
-      console.log(data)
-    },
-  })
-}
-
 function connectMetamask() {
-  $.ajax({
-    type: 'GET',
-    url: 'http://localhost:3000/connectMetamask',
-    success: function (data) {
-      console.log('Connect success')
-    },
-  })
+  if (typeof window.ethereum === 'undefined') {
+    console.error('MetaMask is not installed')
+  } else {
+    // Connect to MetaMask
+    window.ethereum
+      .enable()
+      .then((accounts) => {
+        console.log('MetaMask is connected')
+        console.log('Accounts:', accounts)
+      })
+      .catch((error) => {
+        console.error('Error connecting to MetaMask:', error)
+      })
+  }
 }
 
-$('#form-buy-token').submit(function (e) {
-  e.preventDefault()
-  console.log($(this).serialize())
-  $.ajax({
-    type: 'POST',
-    url: 'http://localhost:3000/buyToken',
-    data: $(this).serialize(),
-    success: function (data) {
-      console.log(data)
-    },
-  })
-})
+function disconnectMetamask() {
+  if (window.ethereum && window.ethereum.isConnected()) {
+    window.ethereum.disconnect()
+  }
+}

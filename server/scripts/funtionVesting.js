@@ -6,7 +6,7 @@ const web3 = new Web3(
 const ABI = require('../../client/admin/assets/abi/ERC20.json')
 const vestingabi = require('../ABI/vestingABI.json')
 
-const wallet = web3.eth.accounts.wallet.add(process.env.ADMIN_PRIVATEKEY)
+// const wallet = web3.eth.accounts.wallet.add(process.env.ADMIN_PRIVATEKEY)
 
 const sendERC20Token = async function (tokenAddress, receiver, amount) {
   const tokenContract = new web3.eth.Contract(ABI, tokenAddress)
@@ -47,6 +47,24 @@ const getVestingInfor = async function () {
   }
 }
 
+const getTxDetails = async function (transaction) {
+  const tx = await web3.eth.getTransaction(transaction)
+  const input = tx.input
+  const address_to = '0x' + input.substr(34, 40)
+  const amount = '0x' + input.substr(74, 64)
+  const amount_to_num = +amount
+  const address_from = tx.from
+  const token = tx.to
+  const data = {
+    address_to: address_to,
+    address_from: address_from,
+    amount: amount_to_num / Math.pow(10, 6),
+    token: token,
+  }
+  console.log(data)
+  return data
+}
+
 const connectMetamask = async function () {
   if (typeof window.ethereum === 'undefined') {
     console.error('MetaMask is not installed')
@@ -64,4 +82,7 @@ const connectMetamask = async function () {
   }
 }
 
+getTxDetails(
+  '0x12d4473e7aab5aa8d14f901224d92fc7ddc9a62bd6638ff3d0d644aa4d194d4b'
+)
 module.exports = { sendERC20Token, connectMetamask, getVestingInfor }

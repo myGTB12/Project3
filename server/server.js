@@ -27,10 +27,6 @@ app.post('/fundVesting', async (req, res) => {
   console.log(fundVesting)
 })
 
-app.get('/connectMetamask', async (req, res) => {
-  await functionVesting.connectMetamask()
-})
-
 app.get('/project-detail', async (req, res) => {
   const data = await functionVesting.getVestingInfor()
   res.send(data)
