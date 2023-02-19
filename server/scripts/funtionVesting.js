@@ -22,11 +22,8 @@ const sendERC20Token = async function (tokenAddress, receiver, amount) {
   return tx
 }
 
-const getVestingInfor = async function () {
-  const VestingContract = new web3.eth.Contract(
-    vestingabi,
-    '0x5245306dB39361031993FBB7bc207B447Cb42A08'
-  )
+const getVestingInfor = async function (contractAddress) {
+  const VestingContract = new web3.eth.Contract(vestingabi, contractAddress)
   const tokenAddress = await VestingContract.methods.token().call()
   const projectName = await VestingContract.methods.projectName().call()
   const firstRelease = await VestingContract.methods.firstRelease().call()
@@ -44,7 +41,14 @@ const getVestingInfor = async function () {
     timePerPeriods: timePerPeriod,
     cliff: cliff,
     totalTokens: totalTokens,
+    contractAddress: contractAddress,
   }
+}
+
+async function getDecimal(tokenAddress) {
+  const erc20Contract = new web3.eth.Contract(ABI, tokenAddress)
+  const decimal = await erc20Contract.methods.decimals().call()
+  return decimal
 }
 
 const getTxDetails = async function (transaction) {
@@ -55,13 +59,13 @@ const getTxDetails = async function (transaction) {
   const amount_to_num = +amount
   const address_from = tx.from
   const token = tx.to
+  const decimal = await getDecimal(token)
   const data = {
     address_to: address_to,
     address_from: address_from,
-    amount: amount_to_num / Math.pow(10, 6),
+    amount: amount_to_num / Math.pow(10, decimal),
     token: token,
   }
-  console.log(data)
   return data
 }
 
@@ -83,6 +87,11 @@ const connectMetamask = async function () {
 }
 
 getTxDetails(
-  '0x12d4473e7aab5aa8d14f901224d92fc7ddc9a62bd6638ff3d0d644aa4d194d4b'
+  '0x004e9c7ad17104ce347dd7d3b5410527daa018b2068d600af543c3817818d501'
 )
-module.exports = { sendERC20Token, connectMetamask, getVestingInfor }
+module.exports = {
+  sendERC20Token,
+  connectMetamask,
+  getVestingInfor,
+  getTxDetails,
+}

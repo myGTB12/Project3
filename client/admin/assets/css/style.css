@@ -8957,6 +8957,10 @@ progress {
   font-size: 0.875em;
   color: #6c757d; }
 
+.form-control-2{
+  color:#000000 !important;
+}
+
 .form-control, .asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],
 .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
 .tt-query,
@@ -20808,6 +20812,10 @@ div.tagsinput {
   @media (max-width: 992px) {
     .page-body-wrapper {
       width: 100%; } }
+
+.full-card{
+  width: 100%;
+}
 
 .container-scroller {
   display: flex;

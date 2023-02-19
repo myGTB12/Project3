@@ -23,7 +23,7 @@
     <script src="../../assets/js/vesting-info.js"></script>
   </head>
   <body>
-    <div class="container-scroller">
+    <div class="container-scroller full-card">
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -103,7 +103,7 @@
             </a>
           </li> -->
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
+            <a class="nav-link" href="../../pages/tables/user-list.html">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -345,7 +345,7 @@
             <div class="page-header">
               <h3 class="page-title"> Admin edit project </h3>
             </div>
-              <div class="col-md-6 grid-margin stretch-card">
+              <div class="grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title" id="projectName">Edit Project</h4>
@@ -354,43 +354,43 @@
                       <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Token: </label>
                         <div class="col-sm-9">
-                          <input name="token" type="text" class="form-control" readonly id="token">
+                          <input name="token" type="text" class="form-control form-control-2" readonly id="token">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputEmail2"  class="col-sm-3 col-form-label">First Release</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" readonly id="firstRelease" placeholder="In percent for percent of total tokens that user will receive at first claim">
+                          <input type="text" class="form-control form-control-2" readonly id="firstRelease" placeholder="In percent for percent of total tokens that user will receive at first claim">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">Start Time </label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="startTime" placeholder="Moment when releasing the first 20% of the tokens">
+                          <input type="text" class="form-control form-control-2" id="startTime" placeholder="Moment when releasing the first 20% of the tokens">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Cliff</label>
                         <div class="col-sm-9">
-                          <input type="text" readonly class="form-control" id="cliff" placeholder="Delay (seconds) from Start Time after that monthly vesting starts">
+                          <input type="text" readonly class="form-control form-control-2" id="cliff" placeholder="Delay (seconds) from Start Time after that monthly vesting starts">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Total Periods</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" readonly id="totalPeriods" placeholder="Total amount of vesting periods">
+                          <input type="text" class="form-control form-control-2" readonly id="totalPeriods" placeholder="Total amount of vesting periods">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Total Tokens</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="totalTokens" placeholder="Total amount of vesting periods">
+                          <input type="text" class="form-control form-control-2" name="totalTokens" id="totalTokens" placeholder="Total amount of vesting periods">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Time Per Periods</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" readonly id="timePerPeriods" placeholder="Time in seconds for every vesting periods">
+                          <input type="text" class="form-control form-control-2" readonly id="timePerPeriods" placeholder="Time in seconds for every vesting periods">
                         </div>
                       </div>
                       <button type="submit" class="btn btn-primary me-2">Fund Vesting</button>
