@@ -1,7 +1,7 @@
 const Web3 = require('web3')
 require('dotenv').config()
 const web3 = new Web3(
-  'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
+  'https://eth-goerli.g.alchemy.com/v2/ze9JoGYLUuG5hH_t9nPuLALX2TKCKlDH'
 )
 const ABI = require('../../client/admin/assets/abi/ERC20.json')
 const vestingabi = require('../ABI/vestingABI.json')

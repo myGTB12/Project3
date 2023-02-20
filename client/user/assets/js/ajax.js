@@ -133,3 +133,17 @@ function projectStatus() {
     },
   })
 }
+
+$('#form-buy-token').submit(function (e) {
+  e.preventDefault()
+  $.ajax({
+    type: 'POST',
+    url: `http://localhost:3000/buyToken`,
+    data: $(this).serialize(),
+    success: function (data) {
+      if (data) {
+        location.reload()
+      }
+    },
+  })
+})

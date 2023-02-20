@@ -1,7 +1,7 @@
 const Web3 = require('web3')
 const config = require('dotenv').config({ path: '../.env' })
 const web3 = new Web3(
-  'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
+  'https://eth-goerli.g.alchemy.com/v2/ze9JoGYLUuG5hH_t9nPuLALX2TKCKlDH'
 )
 
 const abi = require('../ABI/vestingABI.json')
@@ -49,7 +49,6 @@ const setStartTime = async function (contractAddress, startTime) {
 
 const addWhitelistUser = async function (contractAddress, userAddress, amount) {
   const VestingContract = new web3.eth.Contract(abi, contractAddress)
-  console.log(222)
   const addUser = VestingContract.methods
     .addWhitelistUser(userAddress, amount)
     .send({

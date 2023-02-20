@@ -2,11 +2,13 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const db = require('./scripts/database')
+const bodyParser = require('body-parser')
 require('dotenv').config({ path: './.env' })
 const functionVesting = require('./scripts/funtionVesting')
 const vestingContract = require('./scripts/VestingContract')
 const cookieParser = require('cookie-parser')
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
@@ -118,5 +120,11 @@ app.get('/vesting_status', async (req, res) => {
       }
     )
   })
+})
+
+app.post('/buy-token', async (req, res) => {
+  const token = req.body
+  console.log(token)
+  res.send(token)
 })
 app.listen(3000)

@@ -1,7 +1,7 @@
 const Web3 = require('web3')
 require('dotenv').config()
 const web3 = new Web3(
-  'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
+  'https://eth-goerli.g.alchemy.com/v2/ze9JoGYLUuG5hH_t9nPuLALX2TKCKlDH'
 )
 const wallet = web3.eth.accounts.wallet.add(process.env.ADMIN_PRIVATEKEY)
 const deploy = function (
