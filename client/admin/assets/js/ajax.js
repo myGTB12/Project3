@@ -73,6 +73,16 @@ function setTransaction() {
   })
 }
 
+$('#login').submit(function (e) {
+  e.preventDefault()
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:3000/login',
+    data: $(this).serialize(),
+    success: function (data) {},
+  })
+})
+
 $('#form-vesting-pj').submit(function (e) {
   const params = new URLSearchParams(window.location.search)
   const id = params.get('id')

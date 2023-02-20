@@ -5,9 +5,22 @@ const db = require('./scripts/database')
 require('dotenv').config({ path: './.env' })
 const functionVesting = require('./scripts/funtionVesting')
 const vestingContract = require('./scripts/VestingContract')
+const cookieParser = require('cookie-parser')
+
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
+
+app.post('/login', (req, res) => {
+  const { user, password } = req.body
+  if (user === 'admin' && password === 'password') {
+    res.cookie('loggedIn', 'true')
+    res.send('Login successful')
+  } else {
+    res.send('Invalid username or password')
+  }
+})
 
 app.get('/getTxDetails', async (req, res) => {
   return new Promise(async (result, reject) => {
