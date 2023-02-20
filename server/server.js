@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const db = require('./scripts/database')
-
+require('dotenv').config({ path: './.env' })
 const functionVesting = require('./scripts/funtionVesting')
 const vestingContract = require('./scripts/VestingContract')
 app.use(express.json())
@@ -27,16 +27,32 @@ app.get('/getTxDetails', async (req, res) => {
   })
 })
 
-app.post('/postNum', async (req, res) => {
-  const a = req.body
-  console.log(a)
-  res.send(a)
+app.post('/getContractAddress/:id', async (req, res) => {
+  const id = req.params.id
+  const amount = req.body.amount
+  const userAddress = req.body.userAddress
+
+  return new Promise(async (result, reject) => {
+    db.query(
+      'SELECT contract_address FROM vesting_contract_address WHERE id = ?',
+      [id],
+      async function (error, results, fields) {
+        if (error) throw error
+        const contractAddress = results[0].contract_address
+        await vestingContract.addWhitelistUser(
+          contractAddress,
+          userAddress,
+          amount
+        )
+        res.send(true)
+      }
+    )
+  })
 })
 
 app.post('/fundVesting/:id', async (req, res) => {
   const id = req.params.id
   const amount = req.body.totalTokens
-  console.log(amount)
   return new Promise(async (result, reject) => {
     db.query(
       'SELECT contract_address FROM vesting_contract_address WHERE id = ?',

@@ -8957,6 +8957,10 @@ progress {
   font-size: 0.875em;
   color: #6c757d; }
 
+.form-control-2{
+  color:#000000 !important;
+}
+
 .form-control, .asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],
 .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
 .tt-query,
@@ -20809,6 +20813,10 @@ div.tagsinput {
     .page-body-wrapper {
       width: 100%; } }
 
+.full-card{
+  width: 100%;
+}
+
 .container-scroller {
   display: flex;
   position: relative; }
@@ -20985,17 +20993,17 @@ body{
 }
 
 .bg-tokenUSDT{
-  background-image: url("/client/user/assets/images/dashboard/tether-usdt-logo.png") !important;
+  background-image: url("/client/admin/assets/images/dashboard/tether-usdt-logo.png") !important;
   background-size: cover;
 }
 
 .bg-tokenUSDC{
-  background-image: url("/client/user/assets/images/dashboard/usdc-coin-icon.png") !important;
+  background-image: url("/client/admin/assets/images/dashboard/usdc-coin-icon.png") !important;
   background-size: cover;
 }
 
 .bg-tokenETH{
-  background-image: url("/client/user/assets/images/dashboard/ethereum-eth-icon.png") !important;
+  background-image: url("/client/admin/assets/images/dashboard/ethereum-eth-icon.png") !important;
   background-size: cover;
 }
 

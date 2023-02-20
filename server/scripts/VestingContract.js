@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-require('dotenv').config()
+const config = require('dotenv').config({ path: '../.env' })
 const web3 = new Web3(
   'https://eth-goerli.g.alchemy.com/v2/kVYBbuklR6HV4zruW5si30G82rhR08KS'
 )
@@ -34,6 +34,7 @@ const claimTokens = async function (contractAddress) {
   const VestingContract = new web3.eth.Contract(abi, contractAddress)
   const claim = VestingContract.methods.claimTokens().send({
     from: accounts[0],
+    gasLimit: 300000,
   })
   return claim
 }
@@ -48,20 +49,23 @@ const setStartTime = async function (contractAddress, startTime) {
 
 const addWhitelistUser = async function (contractAddress, userAddress, amount) {
   const VestingContract = new web3.eth.Contract(abi, contractAddress)
+  console.log(222)
   const addUser = VestingContract.methods
     .addWhitelistUser(userAddress, amount)
     .send({
       from: wallet.address,
+      gasLimit: 300000,
     })
   return addUser
 }
 
 const removeWhitelistUser = async function (contractAddress, userAddress) {
   const VestingContract = new web3.eth.Contract(abi, contractAddress)
-  const addUser = VestingContract.methods
+  const removeUser = VestingContract.methods
     .removeWhitelistUser(userAddress)
     .send({
       from: wallet.address,
+      gasLimit: 300000,
     })
   return removeUser
 }
